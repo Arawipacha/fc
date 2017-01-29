@@ -1,0 +1,83 @@
+<!-- <custom-style> -->
+<style is="custom-style" include="app-grid-style">
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .item {
+    background-color: white;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Roboto', 'Noto', sans-serif;
+    background-color: #BDBDBD;
+  }
+  
+  app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: cornflowerblue;
+    color: #fff;
+    box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.4);
+
+  }
+  .content{
+    /*height: 100%;*/
+  }
+
+/*
+.paper-header {
+  position: relative;
+}
+*/
+paper-scroll-header-panel{
+  display: block;
+        position: inherit;
+        overflow: hidden;
+}
+</style>
+
+<paper-scroll-header-panel fixed>
+ 
+    <paper-toolbar>
+
+      <paper-icon-button icon="menu" onclick="drawer.toggle()"></paper-icon-button>
+      <div class="spacer title">{{title}}</div>
+       
+        <paper-icon-button *ngIf="controlMenu.search" icon="search"></paper-icon-button>
+        
+        <paper-icon-button *ngIf="controlMenu.view" icon="open-in-new" (click)="view(1)"></paper-icon-button>
+        <paper-icon-button *ngIf="controlMenu.edit" icon="create" (click)="edit(1)"></paper-icon-button>
+        <paper-icon-button *ngIf="controlMenu.add" icon="add" (click)="nuovo(true)"></paper-icon-button>
+        <paper-icon-button *ngIf="controlMenu.save" icon="save" (click)="save(true)"></paper-icon-button>
+        <paper-icon-button *ngIf="controlMenu.back" icon="reply" (click)="back(true)"></paper-icon-button>
+        <paper-icon-button *ngIf="controlMenu.update" icon="update" (click)="nuovo(true)"></paper-icon-button>
+        
+      
+
+
+
+      <a class="paper-item-link" [routerLink]="['./']" tabindex="-1">
+          <paper-icon-button icon="home"> 
+          </paper-icon-button>
+      </a>
+
+    </paper-toolbar>
+
+    <div class="content">
+
+      <router-outlet></router-outlet>
+
+    </div>
+
+  </paper-scroll-header-panel>
+
+
+
+<app-drawer id="drawer" swipe-open>
+  <app-menu></app-menu>
+</app-drawer>

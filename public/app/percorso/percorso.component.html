@@ -1,0 +1,112 @@
+<style is="custom-style">
+    :host {
+      display: block;
+        /*max-width: 870px; */
+        max-width: 870px;
+        margin: 0px auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .centered-container {
+        margin-top: 0px;
+        max-width: 1000px;
+        margin: 0px auto;
+        background-color: lightblue;
+    }
+    
+    paper-input {
+        padding: 10px 0px 20px;
+    }
+    
+    paper-checkbox {
+        padding: 10px 10px 10px;
+    }
+
+    paper-dialog {
+      display: block;
+      padding: 16px 32px;
+      border: 1px solid #ccc;
+      position: fixed;
+      /*position: absolute;*/
+      top: 0px;
+      left: 0px;
+      margin: 0;
+      width: 80vw;
+      height: 100vh;
+    }
+.main-layout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0px !important;
+  padding: 0 0px !important;
+}
+    
+    @media (max-width: 600px) {
+      paper-dialog {
+        width: 100vw;
+      }
+    }
+</style>
+<div class="centered-container">
+    <vaadin-grid [items]="data" (selected-items-changed)="onSelectedItemsChanged($event)" >
+            <table>
+				<colgroup>
+					<col name="id">
+					<col name="nome">
+					<col name="partenza">
+                    <col name="arrivo">
+				</colgroup>
+
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Partenza</th>
+                        <th>Arrivo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Loading</td>
+						<td>Loading</td>
+						<td>Loading</td>
+                        <td>Loading</td>
+					</tr>
+
+				</tbody>
+			</table>
+    </vaadin-grid>
+</div>
+
+
+<paper-dialog id="dialog" #opendialog modal>
+    <div class="main-layout">
+        <h2>Vettura</h2>
+        <paper-icon-button icon="close" dialog-dismiss></paper-icon-button>
+    </div>
+    <div class="row">
+
+        <div class="col-md-12"><paper-input label="Nome" [(ngModel)]="model.nome"></paper-input></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><paper-input label="Partenza" [(ngModel)]="model.partenza"></paper-input></div>
+        <div class="col-md-4"><paper-input label="Arrivo" [(ngModel)]="model.arrivo"></paper-input></div>
+        <div class="col-md-4">
+        <paper-checkbox name="read" (checked)="model.active" >Attivare</paper-checkbox>    
+        </div>
+    </div>
+
+<div class="row">
+       
+       
+    </div>
+   
+
+    <div class="buttons-layout">
+        <paper-button raised class="save-button" (click)="salvare()">Save</paper-button>
+        <paper-button class="cancel-button" dialog-dismiss>Cancel</paper-button>
+        <paper-button id="delete" class="delete-button">Delete</paper-button>
+    </div>
+    <span id="error"> </span>
+</paper-dialog>

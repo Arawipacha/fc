@@ -1,0 +1,236 @@
+<style is="custom-style">
+    :host {
+      display: block;
+        /*max-width: 870px; */
+        /*max-width: 870px;*/
+        margin: 0px auto;
+        /*margin-top: 20px;*/
+        margin-bottom: 20px;
+    }
+    
+    .centered-container {
+        margin-top: 0px;
+        max-width: 1000px;
+        margin: 0px auto;
+        background-color: lightblue;
+    }
+    paper-checkbox.green {
+    /*align-self: center;*/
+    /*border: 1px solid var(--paper-green-200);*/
+    padding: 15px 16px;
+    }
+    /*
+    paper-input {
+        padding: 10px 0px 20px;
+    }
+    
+    paper-checkbox {
+        padding: 10px 10px 10px;
+    }
+*/
+
+.stylecell2
+{
+    background: red;
+}
+    paper-dialog {
+      display: block;
+      padding: 16px 32px;
+      border: 1px solid #ccc;
+      position: fixed;
+      /*position: absolute;*/
+      top: 0px;
+      left: 0px;
+      margin: 0;
+      width: 80vw;
+      height: 100vh;
+    }
+    paper-dialog > ::content > * {
+     margin-top: 10px;
+    }
+.main-layout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0px !important;
+  padding: 0 0px !important;
+}
+    
+    @media (max-width: 800px) {
+      paper-dialog {
+        width: 100vw;
+      }
+    }
+</style>
+<div class="centered-container">
+    <vaadin-grid [items]="data.detalle_scheda_vettura" (ready)="onGridReady($event)" (selected-items-changed)="onSelectedItemsChanged($event)" >
+            <table>
+				<colgroup>
+					<col name="nro_gg">
+					<col name="km_ini">
+					<col name="km_fine">
+                    <col name="km_totale">
+                    <col name="spesa">
+                    <col name="consegne">
+                    <col name="ritiri">
+                    <col name="fullname_dipendente">
+                    <col name="lavorabile">
+				</colgroup>
+
+				<thead>
+					<tr>
+						<th>Nro</th>
+						<th>Km Inizio</th>
+						<th>Km Fine</th>
+                        <th>KM Totale</th>
+                        <th>Spesa</th>
+                        <th>Consegne</th>
+                        <th>Retiri</th>
+                        <th>Dipendente</th>
+                        <th>Lavorabile</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Loading</td>
+						<td>Loading</td>
+						<td>Loading</td>
+                        <td>Loading</td>
+						<td>Loading</td>
+						<td>Loading</td>
+                        <td>Loading</td>
+                        <td>Loading</td>
+                        <td>Loading</td>
+					</tr>
+
+				</tbody>
+			</table>
+    </vaadin-grid>
+</div>
+
+
+
+<paper-dialog id="dialog" #opendetalleschedavettura modal (iron-overlay-closed)="closeDialog($event)">
+    <div class="main-layout">
+        <h2>Edit Detalle Scheda Vetura  nro {{model.nro_gg}}</h2>
+        <paper-icon-button icon="close" dialog-dismiss ></paper-icon-button>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <paper-input label="KM Inizio" [(ngModel)]="model.km_ini" (ngModelChange)="changeValueKmTotale($event)" type="number"></paper-input>
+        </div>
+        <div class="col-md-4">
+            <paper-input label="KM Fine" [(ngModel)]="model.km_fine" (ngModelChange)="changeValueKmTotale($event)"   type="number"></paper-input>
+        </div>
+        <div class="col-md-4">
+            <paper-input label="KM Totale" [(ngModel)]="model.km_totale"  type="number"></paper-input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <paper-input label="Consegne:" [(ngModel)]="model.consegne"  type="number"></paper-input>
+        </div>
+        <div class="col-md-3">
+            <paper-input label="Ritiri:" [(ngModel)]="model.ritiri"  type="number"></paper-input>
+        </div>
+        <div class="col-md-4">
+            <vaadin-combo-box label="Dipendente"
+                      [items]="dataDipendente"
+                      item-label-path="full_name"
+                      item-value-path="id"
+                      [(value)]="model.dipendente_id"
+                      (selected-item-changed)="selectedItemDipendente=$event.detail.value">
+            </vaadin-combo-box>
+        </div>
+        <div class="col-md-2">
+             <paper-checkbox class="green" (checked)="model.lavorabile" #check (change)="change($event)">Lavorabile</paper-checkbox>
+        </div>
+        
+    </div>
+
+ <div class="row">
+     <div class="col-md-8">
+         
+         <vaadin-grid [items]="model.detalle_spesa" (selected-items-changed)="onSelectedItemsChanged($event)" >
+            <table>
+				<colgroup>
+					<col name="nome">
+					<col name="tipologia">
+                    <col name="spesa">
+                    <col name="paga_ditta">
+				</colgroup>
+
+				<thead>
+					<tr>
+						<th>Descrizione</th>
+						<th>Tipo</th>
+						<th>Spesa</th>
+                        <th>Paga Ditta</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Loading</td>
+						<td>Loading</td>
+						<td>Loading</td>
+                        <td>Loading</td>
+					</tr>
+
+				</tbody>
+			</table>
+    </vaadin-grid>
+     </div>
+     <div class="col-md-4">
+         <div class="row">
+            <div class="col-md-12">
+             <paper-input label="Nome Spesa"></paper-input>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+                <paper-input label="Tipo spesa"></paper-input>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+             <paper-input label="Spesa" type="number" align="right">
+                 <div prefix>€ </div>
+             </paper-input>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+             <paper-checkbox class="green" (checked)="model.attive">Paga la ditta</paper-checkbox>
+            </div>
+         </div>
+          <div class="row">
+            <div class="col-md-12">
+             <paper-input label="Data" type="date"></paper-input>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <paper-button raised class="save-button" (click)="salvare()">Add</paper-button>
+            </div>
+            <div class="col-md-4">
+                <paper-button class="cancel-button" dialog-dismiss>Save</paper-button>
+            </div>
+            <div class="col-md-4">
+                <paper-button id="delete" class="delete-button">Cancel</paper-button>
+            </div>
+        </div>
+        
+         
+         
+
+     </div>
+ </div>
+
+
+
+    <div class="buttons-layout">
+        <paper-button raised class="save-button" (click)="salvaDetalleVettura()">Save</paper-button>
+        <paper-button class="cancel-button" dialog-dismiss>Cancel</paper-button>
+        <paper-button id="delete" class="delete-button">Delete</paper-button>
+    </div>
+    <span id="error"> </span>
+</paper-dialog>

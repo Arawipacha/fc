@@ -1,0 +1,81 @@
+<style include="app-grid-style">
+  :host {
+    display: block;
+    --app-grid-columns: 1;
+    --app-grid-gutter: 10px;
+    --app-grid-expandible-item-columns: 1;
+    --paper-icon-button-ink-color: white;
+  }
+  
+  app-header {
+    background-color: #0b8043;
+    color: white;
+  }
+  
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .centered-container {
+    margin-top: 40px;
+    /*margin-left: 50%;*/
+    max-width: 300px;
+    margin: 40px auto;
+  }
+  
+  .item {
+    /*height: 250px;*/
+    width: 100%;
+    position: relative;
+    background-color: white;
+    background-size: cover;
+    background-position: center center;
+  }
+  
+  
+  
+  .item-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight: 400;
+    padding: 16px;
+  }
+  
+  @media(max-width: 799px) {
+    .centered-container {
+      /*margin: 10px 5px;*/
+    }
+    :host {
+      --app-grid-columns: 1;
+      --app-grid-gutter: 5px;
+      --app-grid-item-height: 200px;
+    }
+  }
+   paper-button.green {
+    /*background-color: var(--paper-green-500);*/
+   /* color: white;*/
+  }
+</style>
+
+  <div class="centered-container">
+
+    <paper-card heading="Iniciar Sesion" class="item">
+      <div class="card-content">Introducir sus datos de Identificación
+        <p>{{message}}</p>
+        <paper-input label="Usuario"></paper-input>
+        <paper-input label="Password"></paper-input>
+      </div>
+      <div class="card-actions">
+        <paper-button raised  class="success green" (click)="login()" *ngIf="!authService.isLoggedIn">Login</paper-button>
+        <paper-button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</paper-button>
+      </div>
+    </paper-card>
+
+
+  </div>
+

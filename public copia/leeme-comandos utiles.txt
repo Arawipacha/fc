@@ -1,0 +1,22 @@
+node-sass -o css sass/materialize.scss
+
+//installacion  gulppara minificar codigo
+//css js y otros como concatenar,  unificacion
+//y optgroupClass
+
+npm install -g gulp
+
+//instalacion n el proyecto
+npm install --save-dev gulp
+
+//instalacion de plugin para minimizar  trafico de archivos
+npm install --save-dev gulp-uglify
+//instalar gulp-concat
+
+npm install --save-dev gulp-concat
+
+//instalar gulp-ruby-sass
+
+npm install --save-dev gulp-sass
+
+gulp start;

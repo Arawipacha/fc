@@ -1,0 +1,53 @@
+<style is="custom-style">
+    :host {
+      display: block;
+        max-width: 870px;
+        margin: 0px auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .centered-container {
+        margin-top: 0px;
+        max-width: 1000px;
+        margin: 0px auto;
+        /*background-color: lightblue;*/
+    }
+    
+
+    
+    paper-input {
+        /*padding: 10px 11px 20px;*/
+    }
+    
+    paper-checkbox {
+        padding: 10px 10px 10px;
+    }
+</style>
+<div class="centered-container">
+    <div class="row">
+        <div class="col-md-12">
+            {{messagio}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <paper-input label="Nome" [(ngModel)]="model.nome" size="100"></paper-input>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <paper-input label="Partenza" [(ngModel)]="model.partenza" size="100"></paper-input>
+        </div>
+        <div class="col-md-4">
+            <paper-input label="Arrivo" [(ngModel)]="model.arrivo" size="100"></paper-input>
+        </div>
+        <div class="col-md-4">
+            <paper-checkbox (checked)="model.attive">Activo</paper-checkbox>
+        </div>
+    </div>
+  
+ 
+
+</div>

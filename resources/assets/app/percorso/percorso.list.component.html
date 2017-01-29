@@ -1,0 +1,83 @@
+<style is="custom-style">
+    :host {
+      display: block;
+        /*max-width: 870px; */
+        max-width: 870px;
+        margin: 0px auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .centered-container {
+        margin-top: 0px;
+        max-width: 1000px;
+        margin: 0px auto;
+        background-color: lightblue;
+    }
+    
+    paper-input {
+        padding: 10px 0px 20px;
+    }
+    
+    paper-checkbox {
+        padding: 10px 10px 10px;
+    }
+
+    paper-dialog {
+      display: block;
+      padding: 16px 32px;
+      border: 1px solid #ccc;
+      position: fixed;
+      /*position: absolute;*/
+      top: 0px;
+      left: 0px;
+      margin: 0;
+      width: 80vw;
+      height: 100vh;
+    }
+.main-layout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0px !important;
+  padding: 0 0px !important;
+}
+    
+    @media (max-width: 600px) {
+      paper-dialog {
+        width: 100vw;
+      }
+    }
+</style>
+<div class="centered-container">
+    <vaadin-grid [items]="data" (selected-items-changed)="onSelectedItemsChanged($event)" >
+            <table>
+				<colgroup>
+					<col name="id">
+					<col name="nome">
+					<col name="partenza">
+                    <col name="arrivo">
+                    <col name="attive">
+				</colgroup>
+
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Partenza</th>
+                        <th>Arrivo</th>
+                        <th>Attivo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Loading</td>
+						<td>Loading</td>
+						<td>Loading</td>
+                        <td>Loading</td>
+                        <td>Loading</td>
+					</tr>
+
+				</tbody>
+			</table>
+    </vaadin-grid>
+</div>

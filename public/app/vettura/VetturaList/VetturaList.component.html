@@ -1,0 +1,94 @@
+<style is="custom-style">
+    :host {
+      display: block;
+        max-width: 870px;
+        margin: 0px auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .centered-container {
+        margin-top: 0px;
+        max-width: 1000px;
+        margin: 0px auto;
+        /*background-color: lightblue;*/
+    }
+    
+
+    
+    paper-input {
+        padding: 10px 11px 20px;
+    }
+    
+    paper-checkbox {
+        padding: 10px 10px 10px;
+    }
+</style>
+<div class="centered-container">
+  
+   <form>
+        <paper-card heading="Editar Oficina" class="item">
+            <div class="card-content"> Detalle de la Oficina de Registro Civil
+                <p>{{message}}</p>
+                <paper-input label="Oficina" size="100"></paper-input>
+
+                <paper-button onclick="dialog.open();">modal dialog</paper-button>
+                <paper-input label="Ubigeo" size="100"></paper-input>
+                <paper-input label="Ubicación" size="100"></paper-input>
+<paper-checkbox>Active</paper-checkbox>
+</div>
+<div class="card-actions">
+    <paper-button raised class="success green">Salvar</paper-button>
+
+</div>
+</paper-card>
+</form>
+
+
+
+
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Table heading</th>
+                    <th>Table heading</th>
+                    <th>Table heading</th>
+                    <th>Table heading</th>
+                    <th>Table heading</th>
+                    <th>Table heading</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
